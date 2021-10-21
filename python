@@ -1,0 +1,42 @@
+#check for uniqueness in Python List
+#use set to determine
+def all_unique(lst):
+    return len(lst) == len(set(lst))
+
+y = [1,2,3,4,5]
+print(all_unique(x))
+print(all_unique(y))
+
+#=====
+#Anagram method
+from collections import Counter
+
+def anagram(first, second):
+    return Counter(first) == Counter(second)
+
+anagram("abcd3", "3acdb")
+
+#=====
+#Check memory usage of an object
+import sys 
+variable = 30 
+print(sys.getsizeof(variable))
+
+#=====
+
+#Size of string in bytes
+def byte_size(string):
+    return(len(string.encode('utf-8')))
+print(byte_size('?'))
+print(byte_size('Hello World'))
+
+#=====
+
+#split LIST into sized chunks
+#This method splits the list into smaller lists of the specified size
+
+def chunk(list, size):
+    return [list[i:i+size] for i in range(0,len(list), size)]
+lstA = [1,2,3,4,5,6,7,8,9,10]
+lstSize = 3
+chunk(lstA, lstSize)
