@@ -1,0 +1,99 @@
+#Snippets
+
+
+//from charp-examples.net
+
+***format a date/time string.
+
+String.Format("{0:d/M/yyyy HH:mm:ss}", dt); // "9/3/2008 16:05:07" - english (en-US)
+
+// month/day numbers without/with leading zeroes
+String.Format("{0:M/d/yyyy}", dt);            // "3/9/2008"
+String.Format("{0:MM/dd/yyyy}", dt);          // "03/09/2008"
+
+// day/month names
+String.Format("{0:ddd, MMM d, yyyy}", dt);    // "Sun, Mar 9, 2008"
+String.Format("{0:dddd, MMMM d, yyyy}", dt);  // "Sunday, March 9, 2008"
+
+// two/four digit year
+String.Format("{0:MM/dd/yy}", dt);            // "03/09/08"
+String.Format("{0:MM/dd/yyyy}", dt);          // "03/09/2008"
+
+String.Format("{0:t}", dt);  // "4:05 PM"                         ShortTime
+String.Format("{0:d}", dt);  // "3/9/2008"                        ShortDate
+String.Format("{0:T}", dt);  // "4:05:07 PM"                      LongTime
+String.Format("{0:D}", dt);  // "Sunday, March 09, 2008"          LongDate
+String.Format("{0:f}", dt);  // "Sunday, March 09, 2008 4:05 PM"  LongDate+ShortTime
+String.Format("{0:F}", dt);  // "Sunday, March 09, 2008 4:05:07 PM" FullDateTime
+String.Format("{0:g}", dt);  // "3/9/2008 4:05 PM"                ShortDate+ShortTime
+String.Format("{0:G}", dt);  // "3/9/2008 4:05:07 PM"             ShortDate+LongTime
+String.Format("{0:m}", dt);  // "March 09"                        MonthDay
+String.Format("{0:y}", dt);  // "March, 2008"                     YearMonth
+String.Format("{0:r}", dt);  // "Sun, 09 Mar 2008 16:05:07 GMT"   RFC1123
+String.Format("{0:s}", dt);  // "2008-03-09T16:05:07"             SortableDateTime
+String.Format("{0:u}", dt);  // "2008-03-09 16:05:07Z"            UniversalSortableDateTime
+
+=====
+
+***String format for double
+
+// just two decimal places
+String.Format("{0:0.00}", 123.4567);      // "123.46"
+String.Format("{0:0.00}", 123.4);         // "123.40"
+String.Format("{0:0.00}", 123.0);         // "123.00"
+
+// max. two decimal places
+String.Format("{0:0.##}", 123.4567);      // "123.46"
+String.Format("{0:0.##}", 123.4);         // "123.4"
+String.Format("{0:0.##}", 123.0);         // "123"
+
+=====
+
+*** foreach example
+
+//simple foreach
+var names = new List<string>() { "John", "Tom", "Peter" };
+foreach (string name in names)
+{
+    Console.WriteLine(name);
+}
+
+=====
+
+***open a File
+
+//open for read/write
+using (var fileStream = new FileStream(@"c:\file.txt", FileMode.Open))
+{
+    // read from file or write to file
+}
+
+//open for read
+using (var fileStream = new FileStream(@"c:\file.txt", FileMode.Open, FileAccess.Read))
+{
+    // read from file
+}
+
+//open for write
+using (var fileStream = new FileStream(@"c:\file.txt", FileMode.Open, FileAccess.Write))
+{
+    // write to file
+}
+
+//append to file (and create if does not exist...)
+using (var fileStream = new FileStream(@"c:\file.txt", FileMode.Append))
+{
+    // append to file
+}
+
+//Create new file (or overwrite file if exists)
+using (var fileStream = new FileStream(@"c:\file.txt", FileMode.Create))
+{
+    // write to just created file
+}
+
+//Create new file and open for read/write (throw exception if exists)
+using (var fileStream = new FileStream(@"c:\file.txt", FileMode.CreateNew))
+{
+    // write to just created file
+}
